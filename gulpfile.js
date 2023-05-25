@@ -64,4 +64,5 @@ function server(cb) {
   cb()
 }
 
+exports.default = parallel(html, css, js)
 exports.default = series(clean, parallel(html, css, js), server, watcher)
