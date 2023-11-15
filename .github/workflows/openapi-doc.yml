@@ -1,0 +1,35 @@
+name: OpenAPI Document Preparation
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+env:
+  name: Sourav
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        
+      - name: User Input
+        run: |
+          echo "Please provide the API key:"
+          read API_KEY
+          echo "::set-output name=api_key::$API_KEY"
+
+      - name: Call OpenAPI Service
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ steps.user_input.outputs.api_key }}" \
+            -d '{"messages":[{"role":"user","content":"I want a prepare a test case document. I want to analyse this code change $(git diff HEAD^ HEAD). And return me a table with test-case id, test description and expected result in a tabular format"}]}' \
+            https://link-test.blueyonder.com/openaiext/deployments/gpt-0301/chat/completions?api-version=2023-03-15-preview
