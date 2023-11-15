@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Display Repository Variable
         env:
-          REPO_VARIABLE: ${{ secrets.MY_SECRET_VARIABLE }}
+          REPO_VARIABLE: ${{ secrets.TOKEN }}
         run: |
           echo "The repository variable value is $REPO_VARIABLE"
       - name: Call OpenAPI Service
         run: |
           curl -X POST https://link-test.blueyonder.com/openaiext/deployments/gpt-0301/chat/completions?api-version=2023-03-15-preview \
                -H 'Content-Type: application/json' \
-               -H 'Authorization: Bearer ${{ env.MY_VARIABLE }}' \
+               -H 'Authorization: Bearer ${{ env.TOKEN }}' \
                -d '{"messages":[{"role":"user","content":"I want a prepare a test case document. I want to analyze this code change $(git diff HEAD^ HEAD). And return me a table with test-case id, test description and expected result in a tabular format"}]}'
