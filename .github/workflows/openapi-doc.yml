@@ -19,7 +19,7 @@ jobs:
       - name: Get changes from last commit
         id: get_changes
         run: |
-          changes=$(git diff HEAD^ HEAD) # Save the changes in a variable
+          changes=$(git diff HEAD HEAD^ process-model/ ums-data/) # Save the changes in a variable
           echo "::set-output name=changes::$changes" # Set the output variable
 
       - name: Display changes
