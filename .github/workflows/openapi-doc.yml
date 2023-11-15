@@ -19,8 +19,9 @@ jobs:
       - name: Get changes from last commit
         id: get_changes
         run: |
-          changes=$(git log -p -1) # Save the changes in a variable
+          changes=$(git diff HEAD^ HEAD) # Save the changes in a variable
           echo "::set-output name=changes::$changes" # Set the output variable
+
       - name: Display changes
         run: |
           echo "${{ steps.get_changes.outputs.changes }}" # Display the changes stored in the variable
