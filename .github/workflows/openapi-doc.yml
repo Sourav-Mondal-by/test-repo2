@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Get git diff
         id: git-diff
-        run: echo "::set-output name=git-diff::$(echo $(git diff --quiet HEAD~1 HEAD || echo true))"
+        run: echo "::set-output name=git-diff::$(echo $(git diff || echo true))"
       - name: Call OpenAPI Service
         env:
           REPO_VARIABLE: ${{ secrets.token }}
