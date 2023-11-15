@@ -21,8 +21,7 @@ jobs:
 
       - name: Call OpenAPI Service
         run: |
-          curl -X POST \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer $API_KEY" \
-            -d '{"messages":[{"role":"user","content":"I want a prepare a test case document. I want to analyze this code change $(git diff HEAD^ HEAD). And return me a table with test-case id, test description and expected result in a tabular format"}]}' \
-            https://link-test.blueyonder.com/openaiext/deployments/gpt-0301/chat/completions?api-version=2023-03-15-preview
+          curl -X POST https://link-test.blueyonder.com/openaiext/deployments/gpt-0301/chat/completions?api-version=2023-03-15-preview
+               -H 'Content-Type: application/json'
+               -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjlHbW55RlBraGMzaE91UjIybXZTdmduTG83WSJ9.eyJhdWQiOiJiNTgxYWI4Mi01MmZhLTQ0NDEtOTM5NC03N2ZiNTMwYTczNmQiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vMmFjMzZjZWUtMDYxNy00YWMwLWJlYmYtZTFjZTVkZmFiODZjL3YyLjAiLCJpYXQiOjE3MDAwNjU5MzMsIm5iZiI6MTcwMDA2NTkzMywiZXhwIjoxNzAwMDcwODcwLCJhaW8iOiJBVlFBcS84VkFBQUFjbk1MbXNMdjhWbHpiL1hZM2Rac1VydUdzNXVneVFEbXJ2UzhpWmhoeUpSYkdWYTYzUnJKQ0NBcjFxendLVFpsUzBoendvVyt3cXNFNmt2bW94V3JrNUpoUmlJU2REdE1DakNhS29yQVBlST0iLCJhenAiOiJiNTgxYWI4Mi01MmZhLTQ0NDEtOTM5NC03N2ZiNTMwYTczNmQiLCJhenBhY3IiOiIwIiwibmFtZSI6IlNvdXJhdiBNb25kYWwiLCJvaWQiOiIxOTY5MDFlMC02ZGYzLTRhYjQtODNhZS05NGE3ZWU1ZDQ3NmIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJTb3VyYXYuTW9uZGFsQGpkYS5jb20iLCJyaCI6IjAuQVJ3QTdtekRLaGNHd0VxLXYtSE9YZnE0YklLcmdiWDZVa0ZFazVSMy0xTUtjMjBjQU5rLiIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6ImhNNFc2cGt2V2ZrcDVOcUlkSVNNalRBVGJFdTQ4clc2SENPZTFNN1Fmd2siLCJ0aWQiOiIyYWMzNmNlZS0wNjE3LTRhYzAtYmViZi1lMWNlNWRmYWI4NmMiLCJ1dGkiOiJ6YTFIei1ZRUpVYVpNZGkyLVVJakFBIiwidmVyIjoiMi4wIn0.ThQX7VvkJx6LsfWubKD8F2OoYUSvKfjVBtf7fW-INN3YOA-pFnWBpaUChvZchEM3zn6_tYWuBUvXuJrb0rNjcbyCXIrXJ_2CW9HWLwuYLJK2odWYuP73m_PZJiQVrnOJeezejCazmxOq-KqSqkrFPHGGHItuSagrmGWNuGcOmOFD2nOibTVHkijRYfR7lHgu7yqa77A6F6MLXkpVN33xHbo0qNgi6n0hyHpwvQb99dDsZZNNW_j44Di1YCd5_JzEGXLPFgX0F8Xh_gmCyiG5rYgrjGIb8dAeJDYpib3iA4PPACeqOSPVeoNEvqAot5z0GX5e5dGkMqEoH7gglUW_ag'
+               -d '{"messages":[{"role":"user","content":"Hello!"}]}'
