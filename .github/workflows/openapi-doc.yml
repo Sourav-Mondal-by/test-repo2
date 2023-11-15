@@ -16,16 +16,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Get Git Diff
+      - name: Get git diff
         id: git-diff
-        run: |
-          COMMIT_COUNT=$(git rev-list --count HEAD)
-          if [ "$COMMIT_COUNT" -gt 1 ]; then
-            DIFF=$(git diff HEAD^ HEAD)
-            echo "::set-output name=diff::$DIFF"
-          else
-            echo "::set-output name=diff::"
-          fi
+        run: echo "::set-output name=git-diff::$(echo $(git diff --quiet HEAD~1 HEAD || echo true))"
       - name: Call OpenAPI Service
         env:
           REPO_VARIABLE: ${{ secrets.token }}
