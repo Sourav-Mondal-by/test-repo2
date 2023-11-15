@@ -18,14 +18,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Display Repository Variable
         env:
-          REPO_VARIABLE: ${{ secrets.TOKEN }}
+          REPO_VARIABLE: ${{ github.repository }}
         run: |
           echo "The repository variable value is $REPO_VARIABLE"
       - name: Call OpenAPI Service
         env:
-          REPO_VARIABLE: ${{ secrets.TOKEN }}
+          REPO_VARIABLE: ${{ github.repository }}
         run: |
-          echo "Using repository variable in curl command: $REPO_VARIABLE"
           curl -X POST https://link-test.blueyonder.com/openaiext/deployments/gpt-0301/chat/completions?api-version=2023-03-15-preview \
                -H 'Content-Type: application/json' \
                -H "Authorization: Bearer $REPO_VARIABLE" \
